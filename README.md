@@ -10,7 +10,7 @@ mejor comprensión del código.
 5. Puedes usar librerías de autenticación con JWT (por ejemplo, jsonwebtoken, @nestjs/jwt, passport) o implementarlo desde cero
 
 
-## Propuesta Backend
+## Propuesta Backend: Nodejs, Express y MySQL
 
 <div align="center" style="display: flex;">
     <img src="./assets/backend.png" alt="Propuesta Backend" title="Propuesta Backend" width=800 height=400/>
@@ -196,7 +196,7 @@ Response:
 ]
 ```
 
-## Propuesta Frontend
+## Propuesta Frontend: Angular
 
 ### Login
 
