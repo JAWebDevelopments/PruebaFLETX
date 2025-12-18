@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Create New Product</mat-card-title>
+          <mat-card-subtitle>Add a new product to your inventory</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="mt-3">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Product Name</mat-label>
+                  <input matInput formControlName="nombre" placeholder="Enter product name">
+                  <mat-error *ngIf="productForm.get('nombre')?.invalid && productForm.get('nombre')?.touched">
+                    <span *ngIf="productForm.get('nombre')?.errors?.['required']">Name is required</span>
+                    <span *ngIf="productForm.get('nombre')?.errors?.['minlength']">Name must be at least 3 characters</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+                            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Price</mat-label>
+                  <input matInput type="number" formControlName="precio" placeholder="0.00" step="0.01">
+                  <span matPrefix>$&nbsp;</span>
+                  <mat-error *ngIf="productForm.get('precio')?.invalid && productForm.get('precio')?.touched">
+                    <span *ngIf="productForm.get('precio')?.errors?.['required']">Price is required</span>
+                    <span *ngIf="productForm.get('precio')?.errors?.['min']">Price must be greater than 0</span>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+              <button mat-button type="button" (click)="onCancel()" class="me-2">Cancel</button>
+              <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid || isLoading">
+                <mat-icon *ngIf="isLoading">refresh</mat-icon>
+                {{ isLoading ? 'Creating...' : 'Create Product' }}
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

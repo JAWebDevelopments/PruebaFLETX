@@ -1,0 +1,61 @@
+<mat-toolbar color="primary" class="toolbar">
+  <mat-toolbar-row>
+    <span class="app-title">Fletx</span>
+    <span class="spacer"></span>
+    
+    <!-- User info section -->
+    <div *ngIf="isLoggedIn()" class="user-info">
+      <span class="user-name">{{ getUserName() }}</span>
+      <div class="avatar-circle">
+        {{ getUserInitials() }}
+      </div>
+    </div>
+
+    <button mat-button *ngIf="isLoggedIn()" routerLink="/products">
+      <mat-icon>inventory</mat-icon>
+      Products
+    </button>
+    <button mat-button *ngIf="isLoggedIn()" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="corporate-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Fletx</h5>
+        <p>Soluciones innovadoras para la gestión de productos y logística.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Enlaces</h5>
+        <ul class="footer-links">
+          <li><a href="#" routerLink="/products" *ngIf="isLoggedIn()">Productos</a></li>
+          <li><a href="#" routerLink="/login" *ngIf="!isLoggedIn()">Iniciar Sesión</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Términos de Servicio</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contacto</h5>
+        <p>
+          <mat-icon>email</mat-icon> info@fletx.com<br>
+          <mat-icon>phone</mat-icon> +1 (555) 123-4567<br>
+          <mat-icon>location_on</mat-icon> Ciudad, País
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-12 text-center">
+        <p>&copy; 2025 Fletx. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
